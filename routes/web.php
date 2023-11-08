@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,13 +19,36 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/', function () {
+    return view('home');
+})->middleware('auth');
+
+Route::get('/register', [RegisterController::class, 'create'])
+    ->middleware('guest')
+    ->name('register.index');
+
+Route::post('/register', [RegisterController::class, 'store'])
+    ->name('register.store');
+
+
+
+Route::get('/login', [LoginController::class, 'create'])
+    ->middleware('guest')
+    ->name('login.index');
+
+Route::post('/login', [LoginController::class, 'store'])
+    ->name('login.store');
+
+Route::get('/logout', [LoginController::class, 'destroy'])
+    ->middleware('auth')
+    ->name('login.destroy');
+
 
 Route::controller(App\Http\Controllers\PersonalController::class)->group(function (){
-    Route::get('/personal', 'index');
-    Route::get('/personal/create', 'create');
-    Route::post('/personalstore', 'store');
-    Route::get('/personaledit/{personal}/edit', 'edit');
-    Route::put('/personalupdate/{personal}', 'update');
-
-    Route::delete('/personaldelete/{personal}/delete', 'destroy');
+    Route::get('/personal', 'index')->middleware('auth');
+    Route::get('/personal/create', 'create')->middleware('auth');
+    Route::post('/personalstore', 'store')->middleware('auth');
+    Route::get('/personaledit/{personal}/edit', 'edit')->middleware('auth');
+    Route::put('/personalupdate/{personal}', 'update')->middleware('auth');
+    Route::delete('/personaldelete/{personal}/delete', 'destroy')->middleware('auth');
 });
