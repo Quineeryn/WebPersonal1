@@ -104,4 +104,9 @@ class PersonalController extends Controller
         return redirect('personal')->with('message', 'Data berhasil diupdate');
     }
 
+    public function destroy (Personal $personal){
+        $personal->delete();
+        return redirect('personal')->with('message','Data berhasil dihapus!');
+    }
+
 }

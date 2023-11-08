@@ -24,4 +24,6 @@ Route::controller(App\Http\Controllers\PersonalController::class)->group(functio
     Route::post('/personalstore', 'store');
     Route::get('/personaledit/{personal}/edit', 'edit');
     Route::put('/personalupdate/{personal}', 'update');
+
+    Route::delete('/personaldelete/{personal}/delete', 'destroy');
 });

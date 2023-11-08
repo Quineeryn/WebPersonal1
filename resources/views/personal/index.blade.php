@@ -78,7 +78,13 @@
                         
                                  <td>
                                     <a href="{{ url('personaledit/'.$itemP->id.'/edit')}}" class="btn btn-success btn-sm">Edit</a>
-                                    <a href="" class="btn btn-danger btn-sm">Delete</a>
+
+                                    <form action="{{ url('personaldelete/'.$itemP->id.'/delete')}}" method="POST">
+                                         @csrf
+                                         @method('DELETE')
+
+                                         <button type="submit" class="btn btn-danger btn-sm">DELETE</button>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach
