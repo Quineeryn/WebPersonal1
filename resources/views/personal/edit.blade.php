@@ -54,67 +54,73 @@
                     </div>
 
                     <h4>Education</h4>
+                    @foreach ($personal->education as $key => $education)  
                     <div class="mb3">
                         <label>Education Institution</label>
-                        <input type="text" name="Edu_institution" value = "{{ $personal->education->Edu_institution}} "class="form control">
+                        <input type="text" name="education[{{ $key}}][Edu_institution]" value = "{{ $education->Edu_institution}} "class="form control">
                     </div>
 
                     <div class="mb3">
                         <label>Education Location</label>
-                        <input type="text" name="Loc_edu" value = "{{ $personal->education->Loc_edu}} "class="form control">
+                        <input type="text" name="education[{{ $key }}][Loc_edu]" value = "{{ $education->Loc_edu}} "class="form control">
                     </div>
 
                     <div class="mb3">
                         <label>Start Date</label>
-                        <input type="date" name="Start_date_edu" value = "{{ $personal->education->Start_date_edu}}" class="form control">
+                        <input type="date" name="education[{{ $key}}][Start_date_edu]" value = "{{ $education->Start_date_edu}}" class="form control">
                     </div>
 
                     <div class="mb3">
                         <label>End Date</label>
-                        <input type="date" name="End_date_edu" value = "{{ $personal->education->End_date_edu}}" class="form control">
+                        <input type="date" name="education[{{ $key}}][End_date_edu]" value = "{{ $education->End_date_edu}}" class="form control">
                     </div>
 
                     <div class="mb3">
                         <label>Achievment</label>
-                        <input type="text" name="Achievment" value = "{{ $personal->education->Achievment}}" class="form control">
+                        <input type="text" name="education[{{ $key}}][Achievment]" value = "{{ $education->Achievment}}" class="form control">
                     </div>
 
                     <div class="mb3">
                         <label>Education Level</label>
-                        <input type="text" name="Education_level" value = "{{ $personal->education->Education_level}}" class="form control">
+                        <input type="text" name="education[{{ $key}}][Education_level]" value = "{{ $education->Education_level}}" class="form control">
                     </div>
+                    @endforeach
 
-                    <h4>Experience</h4>
+                    <h4>Experience</h4>    
+                    
+                    @foreach ($personal->experience as $key => $experience)
+                        
                     <div class="mb3">
                         <label>Company Name</label>
-                        <input type="text" name="Company_name" value = "{{ $personal->experience->Company_name}} "class="form control">
+                        <input type="text" name="experience[{{ $key}}][Company_name]" value = "{{ $experience->Company_name}} "class="form control">
                     </div>
 
                     <div class="mb3">
                         <label>Company Location</label>
-                        <input type="text" name="Loc_org" value = "{{ $personal->experience->Loc_org}} "class="form control">
+                        <input type="text" name="experience[{{ $key}}][Loc_org]" value = "{{ $experience->Loc_org}} "class="form control">
                     </div>
 
                     <div class="mb3">
                         <label>Start Date Company</label>
-                        <input type="date" name="Start_date_org" value = "{{ $personal->experience->Start_date_org}}" class="form control">
+                        <input type="date" name="experience[{{ $key}}][Start_date_org]" value = "{{ $experience->Start_date_org}}" class="form control">
                     </div>
 
                     <div class="mb3">
                         <label>End Date Company</label>
-                        <input type="date" name="End_date_org" value = "{{ $personal->experience->End_date_org}}" class="form control">
+                        <input type="date" name="experience[{{ $key}}][End_date_org]" value = "{{ $experience->End_date_org}}" class="form control">
                     </div>
 
                     <div class="mb3">
                         <label>Job Title</label>
-                        <input type="text" name="Job_title" value = "{{ $personal->experience->Job_title}}" class="form control">
+                        <input type="text" name="experience[{{ $key}}][Job_title]" value = "{{ $experience->Job_title}}" class="form control">
                     </div>
 
                     <div class="mb3">
                         <label>Job Description</label>
-                        <input type="text" name="Job_desc" value = "{{ $personal->experience->Education_level}}" class="form control">
+                        <input type="text" name="experience[{{ $key}}][Job_desc]" value = "{{ $experience->Education_level}}" class="form control">
                     </div>
 
+                    @endforeach
 
                     <div class="mb-3">
                         <button type ="submit" class = "btn btn-primary">Update</button>

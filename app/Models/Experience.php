@@ -22,7 +22,7 @@ class Experience extends Model
     ];
 
     public function personal(){
-        $this->belongsTo(Personal::class, 'personal_id' , 'id');
+        return $this->belongsTo(Personal::class, 'personal_id' , 'id');
     }
 }
 
