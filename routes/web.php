@@ -16,3 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::controller(App\Http\Controllers\PersonalController::class)->group(function (){
+    Route::get('/personal', 'index');
+    Route::get('/personal/create', 'create');
+    Route::post('/personalstore', 'store');
+    Route::get('/personaledit/{personal}/edit', 'edit');
+    Route::put('/personalupdate/{personal}', 'update');
+});
