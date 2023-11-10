@@ -23,14 +23,17 @@ Route::get('/', function () {
     return view('home');
 })->middleware('auth');
 
+Route::get('/about', function () {
+    return view('about');
+})->middleware('auth');
+
+
 Route::get('/register', [RegisterController::class, 'create'])
     ->middleware('guest')
     ->name('register.index');
 
 Route::post('/register', [RegisterController::class, 'store'])
     ->name('register.store');
-
-
 
 Route::get('/login', [LoginController::class, 'create'])
     ->middleware('guest')
