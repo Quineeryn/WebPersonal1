@@ -27,27 +27,23 @@ Route::get('/about', function () {
     return view('about');
 })->middleware('auth');
 
-
 Route::get('/register', [RegisterController::class, 'create'])
     ->middleware('guest')
     ->name('register.index');
 
-Route::post('/register', [RegisterController::class, 'store'])
-    ->name('register.store');
+Route::post('/register', [RegispterController::class, 'store'])->name('register.store');
 
 Route::get('/login', [LoginController::class, 'create'])
     ->middleware('guest')
     ->name('login.index');
 
-Route::post('/login', [LoginController::class, 'store'])
-    ->name('login.store');
+Route::post('/login', [LoginController::class, 'store'])->name('login.store');
 
 Route::get('/logout', [LoginController::class, 'destroy'])
     ->middleware('auth')
     ->name('login.destroy');
 
-
-Route::controller(App\Http\Controllers\PersonalController::class)->group(function (){
+Route::controller(App\Http\Controllers\PersonalController::class)->group(function () {
     Route::get('/personal', 'index')->middleware('auth');
     Route::get('/personal/create', 'create')->middleware('auth');
     Route::post('/personalstore', 'store')->middleware('auth');
