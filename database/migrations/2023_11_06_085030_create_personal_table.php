@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('city')->nullable();
             $table->bigInteger('telephone_number')->nullable();
             $table->string('link_profile')->nullable();
+            $table->string('foto')->nullable();
             $table->timestamps();
         });
     }

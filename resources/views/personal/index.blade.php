@@ -6,7 +6,7 @@
             <div class="col-md-12">
 
                 @if (session('message'))
-                    <div class="alert alert-success">{{ 'berhasil' }}</div>
+                    <div class="alert alert-success">{{ 'Data successfully added!' }}</div>
                 @endif
 
                 <div class="card">
@@ -22,7 +22,8 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>desc</th>
+                                    <th>Foto</th>
+                                    <th>Desc</th>
                                     <th>Name</th>
                                     <th>email</th>
                                     <th>address</th>
@@ -48,11 +49,15 @@
                                     <tr>
 
                                         <td>{{ $itemP->id }}</td>
+                                        <td>
+                                            <img src="{{ asset('fotopersonal/' . $itemP->foto) }}" alt=""
+                                                style="width: 40px;">
+                                        </td>
                                         <td>{{ $itemP->deskripsi }}</td>
                                         <td>{{ $itemP->full_name }}</td>
                                         <td>{{ $itemP->email }}</td>
                                         <td>{{ $itemP->address }}</td>
-                                        <td>{{ $itemP->telephone_number }}</td>
+                                        <td>0{{ $itemP->telephone_number }}</td>
                                         <td>{{ $itemP->city }}</td>
                                         <td>{{ $itemP->link_profile }}</td>
 
@@ -84,12 +89,15 @@
                                                 @csrf
                                                 @method('DELETE')
 
-                                                <button type="submit" class="btn btn-danger btn-sm">DELETE</button>
+                                                <button type="submit" class="btn btn-danger delete"
+                                                    data-id="{{ $itemP->id }}">Delete</button>
                                             </form>
                                         </td>
                                     </tr>
                                 @endforeach
-
+                                <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                                <script src="https://code.jquery.com/jquery-3.7.1.slim.js"
+                                    integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
                             </tbody>
                         </table>
 
@@ -97,5 +105,33 @@
                 </div>
             </div>
         </div>
+        <script>
+            $(document).ready(function() {
+                $('.delete').click(function(e) {
+                    e.preventDefault(); // Prevent the default form submission
+
+                    var form = $(this).closest('form');
+
+                    //var personalid = $(this).attr('data-id');
+
+                    swal({
+                        title: "Are you sure?",
+                        text: "Once deleted, you will not be able to recover data ",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    }).then((willDelete) => {
+                        if (willDelete) {
+                            form.submit(); // Submit the form when user confirms deletion
+                            swal("Poof! Your imaginary file has been deleted!", {
+                                icon: "success",
+                            });
+                        } else {
+                            swal("Data is not deleted.");
+                        }
+                    });
+                });
+            });
+        </script>
     </div>
 @endsection

@@ -16,6 +16,12 @@
                         <form action="{{ url('/personalstore') }} " method="POST" enctype="multipart/form-data">
                             @csrf
                             <h4>Personal Information</h4>
+
+                            <div class="mb3">
+                                <label>Masukkan Foto</label>
+                                <input type="file" name="foto" class="form control">
+                            </div>
+
                             <div class="mb3">
                                 <label>Deskripsi</label>
                                 <input type="text" name="deskripsi" class="form control">

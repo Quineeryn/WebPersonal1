@@ -9,19 +9,24 @@ use Illuminate\Http\Request;
 
 class PersonalController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $personal = Personal::all();
         $education = Education::all();
         $experience = Experience::all();
-        return view ('personal.index', compact('personal','education', 'experience'));
+        return view('personal.index', compact('personal', 'education', 'experience'));
     }
 
-    public function create(){
-        
-        return view ('personal.create');
+    public function create()
+    {
+        return view('personal.create');
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
+        $request->validate([
+            'foto' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Add validation for image files
+        ]);
 
         $personal = Personal::create([
             'deskripsi' => $request->deskripsi,
@@ -31,7 +36,14 @@ class PersonalController extends Controller
             'city' => $request->city,
             'telephone_number' => $request->telephone_number,
             'link_profile' => $request->link_profile,
+            'foto' => $request->foto,
         ]);
+
+        if ($request->hasFile('foto')) {
+            $request->file('foto')->move('fotopersonal/', $request->file('foto')->getClientOriginalName());
+            $personal->foto = $request->file('foto')->getClientOriginalName();
+            $personal->save();
+        }
 
         $personal->education()->create([
             'Edu_institution' => $request->Edu_institution,
@@ -50,18 +62,20 @@ class PersonalController extends Controller
             'Job_desc' => $request->Job_desc,
             'Job_title' => $request->Job_title,
         ]);
-        
+
         return redirect('personal')->with('message', 'Personal Added');
     }
 
-    public function edit(Personal $personal){
-
-        //return $personal;
+    public function edit(Personal $personal)
+    {
         return view('personal.edit', compact('personal'));
-
     }
 
-    public function update(Personal $personal, Request $request){
+    public function update(Personal $personal, Request $request)
+    {
+        $request->validate([
+            'foto' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Add validation for image files
+        ]);
 
         $personal->update([
             'deskripsi' => $request->deskripsi,
@@ -71,8 +85,13 @@ class PersonalController extends Controller
             'city' => $request->city,
             'telephone_number' => $request->telephone_number,
             'link_profile' => $request->link_profile,
-
         ]);
+
+        if ($request->hasFile('foto')) {
+            $request->file('foto')->move('fotopersonal/', $request->file('foto')->getClientOriginalName());
+            $personal->foto = $request->file('foto')->getClientOriginalName();
+            $personal->save();
+        }
 
         foreach (($request->input('education') ?? []) as $key => $eduData) {
             if (isset($personal->education[$key])) {
@@ -86,7 +105,7 @@ class PersonalController extends Controller
                 ]);
             }
         }
-    
+
         foreach (($request->input('experience') ?? []) as $key => $expData) {
             if (isset($personal->experience[$key])) {
                 $personal->experience[$key]->update([
@@ -99,14 +118,13 @@ class PersonalController extends Controller
                 ]);
             }
         }
-    
 
-        return redirect('personal')->with('message', 'Data berhasil diupdate');
+        return redirect('personal')->with('message', 'Data successfully updated!');
     }
 
-    public function destroy (Personal $personal){
+    public function destroy(Personal $personal)
+    {
         $personal->delete();
-        return redirect('personal')->with('message','Data berhasil dihapus!');
+        return redirect('personal')->with('message', 'Data successfully deleted!');
     }
-
 }
