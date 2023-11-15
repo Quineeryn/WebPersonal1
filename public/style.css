@@ -9,75 +9,9 @@ body {
   font-family: "Montserrat";
 }
 
-.navbar {
-  position: fixed;
-  top: 0;
-  background-color: #265172;
-  padding: 10px 0;
-  top: 0;
-  background-color: #265172;
-  width: 100%;
-}
-
-.navbar .container {
-  max-width: 100%;
-}
-
-
-.navbar-brand {
-  color: #ffffff;
-  font-size: 30px;
-  padding-left: 40px;
-}
-
-.navbar-toggler-icon {
-  background-color: #265172;
-}
-
-.navbar-nav {
-  margin-left: auto;
-  padding-right: 1000px;
-}
-
-.navbar-nav a {
-  color: #fff;
-  font-size: 25px;
-  letter-spacing: -0.56px;
-  text-decoration: none;
-  margin-right: 20px;
-}
-
-.masuk {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  color: #ffffff;
-  padding-right: 30px;
-}
-
-.masuk a{
-  font-size: 20px;
-}
-
-.masuk button{
-  background-color: #ffffff;
-}
-
-.btn btn-outline-secondary {
-  margin: 0;
-  font-size: 20px;
-  margin-left: 50px;
-  padding-left: 20px;
-}
-
-.body{
-  font-family: "Montserrat";
-}
 /* Blok Pertama */
 .blok-pertama {
-  background-color: #fff7ef;
-  padding: 90px;
-  padding-top: 150px;
+  background-color: #ffffff;
   padding-bottom: 90px;
   padding-left: 30px;
 }
@@ -115,7 +49,7 @@ body {
 
 /* Blok Kedua */
 .blok-kedua {
-  background-color: #fff;
+  background-color: #fff7ef;
   padding: 20px;
   text-align: center;
   padding-left: -30px;
@@ -140,7 +74,7 @@ body {
 
 /* Blok Ketiga */
 .blok-ketiga {
-  background-color: #fff7ef;
+  background-color: #ffffff;
   padding: 90px;
   text-align: center;
 }
@@ -160,7 +94,7 @@ body {
 
 /* Blok Keempat */
 .blok-keempat {
-  background-color: #fff;
+  background-color: #fff7ef;
   padding: 20px;
   text-align: center;
 }
@@ -314,7 +248,6 @@ footer {
   justify-content: flex-start;
   flex-shrink: 0;
   width: 500px;
-  padding-top: 200px;
   position: relative;
   box-shadow: var(
     --shadow-2-box-shadow,
@@ -444,7 +377,6 @@ footer {
   justify-content: flex-start;
   flex-shrink: 0;
   width: 800px;
-  padding-bottom: 200px;
   position: relative;
   box-shadow: var(
     --shadow-2-box-shadow,

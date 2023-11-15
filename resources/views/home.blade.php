@@ -4,12 +4,11 @@
 
 @section('content')
 
-    <h1 class="text-5xl text-center pt-24">Welcome to Cravitae</h1>
-    <section class="blok-pertama">
+    <section class="blok-pertama" style="padding: 80px">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h1 class="display-6">CV MAKER PLATFORM</h1>
+                    <h1 class="display-6" style="font-family: Montserrat; font-size: 65px; font-weight:700;">CV MAKER PLATFORM</h1>
                     <h2 class="display-1">Let’s Boost Your Personal Branding!</h2>
                     <p class="display-6">
                         Elevate Your CV. Unleash Opportunities. Your path to a captivating
@@ -31,41 +30,6 @@
               ">
                             Explore →
                         </button>
-                    </div>
-                    <div class="frame-82">
-                        <div class="frame-32">
-                            <div class="frame-33">
-                                <svg class="vector" width="20" height="25" viewBox="0 0 20 25" fill="none">
-                                    <path d="M19.9095 0.281225C19.8793 0.213732 19.8302 0.156473 19.768"></path>
-                                </svg>
-                                <div class="_4">
-                                    <span>
-                                        <span class="_4-span">4</span>
-                                        <span class="_4-span2"></span>
-                                        <span class="_4-span3">+</span>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="clilent">Clilent</div>
-                        </div>
-                        <svg class="vector-1" height="40" viewBox="0 0 0 40" fill="none">
-                            <path d="M0 0V40" stroke="#E0E0E0"></path>
-                        </svg>
-                        <div class="frame-32">
-                            <div class="frame-83">
-                                <svg class="vector2" width="21" height="25" viewBox="0 0 21 25" fill="none">
-                                    <path d="M20.8536 0.281225C20.8234 0.213732 20.7743 0.156473 20.7121"></path>
-                                </svg>
-                                <div class="_100">
-                                    <span>
-                                        <span class="_100-span">100</span>
-                                        <span class="_100-span2"></span>
-                                        <span class="_100-span3">+</span>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="likes">Likes</div>
-                        </div>
                     </div>
                 </div>
                 <div class="col-md-6">

@@ -2,8 +2,8 @@
 
 @section('content')
     <div>
-        <h1>About Us</h1>
-        <p>Welcome to our about page. Here, you can learn more about our team members.</p>
+        <h1 class="aboutUs" style="text-align: center">About Us</h1>
+        <p class="deskripsi" style="text-align: center">Welcome to our about page. Here, you can learn more about our team members.</p>
 
         <!-- Daftar Tim -->
         <div class="team-member">
