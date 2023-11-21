@@ -1,57 +1,43 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="en" dir="ltr">
 
-@section('title', 'Register')
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Registration | Cravitae </title>
+    <link rel="stylesheet" href="/cssfile/style.css">
+</head>
 
-@section('content')
+<body>
+    <div class="wrapper">
+        <h2>Registration</h2>
+        <form method="POST" action="#" enctype="multipart/form-data">
+          @csrf
+            <div class="input-box">
+                <input type="text" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="input-box">
+                <input type="text" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="input-box">
+                <input type="password" name="password" placeholder="Create password" required>
+            </div>
+            <div class="input-box">
+                <input type="password" name="password_confirmation" placeholder="Confirm password" required>
+            </div>
+            <div class="policy">
+                <input type="checkbox">
+                <h3>I accept all terms & condition</h3>
+            </div>
+            <div class="input-box button">
+                <input type="submit" value="Register Now">
+            </div>
+            <div class="text">
+                <h3>Already have an account? <a href="/login">Login now</a></h3>
+            </div>
+        </form>
+    </div>
+</body>
 
-
-<div class="block mx-auto my-12 p-8 bg-white w-1/3 border border-gray-200 
-rounded-lg shadow-lg">
-
-  <h1 class="text-3xl text-center font-bold">Register</h1>
-
-  <form class="mt-4" method="POST" action="">
-    @csrf
-
-    <input type="text" class="border border-gray-200 rounded-md bg-gray-200 w-full
-    text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" placeholder="Name"
-    id="name" name="name">
-
-    @error('name')        
-      <p class="border border-red-500 rounded-md bg-red-100 w-full
-      text-red-600 p-2 my-2">* {{ $message }}</p>
-    @enderror
-
-    <input type="email" class="border border-gray-200 rounded-md bg-gray-200 w-full
-    text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" placeholder="Email"
-    id="email" name="email">
-
-    @error('email')        
-      <p class="border border-red-500 rounded-md bg-red-100 w-full
-      text-red-600 p-2 my-2">* {{ $message }}</p>
-    @enderror
-
-    <input type="password" class="border border-gray-200 rounded-md bg-gray-200 w-full
-    text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" placeholder="Password"
-    id="password" name="password">
-
-    @error('password')        
-      <p class="border border-red-500 rounded-md bg-red-100 w-full
-      text-red-600 p-2 my-2">* {{ $message }}</p>
-    @enderror
-
-    <input type="password" class="border border-gray-200 rounded-md bg-gray-200 
-    w-full text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" 
-    placeholder="Password confirmation" id="password_confirmation" 
-    name="password_confirmation">
-
-    <button type="submit" class="rounded-md bg-indigo-500 w-full text-lg
-    text-white font-semibold p-2 my-3 hover:bg-indigo-600">Send</button>
-
-
-  </form>
-
-
-</div>
-
-@endsection
+</html>
