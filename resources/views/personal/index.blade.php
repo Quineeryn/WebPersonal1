@@ -84,6 +84,15 @@
                                             <a href="{{ url('personaledit/' . $itemP->id . '/edit') }}"
                                                 class="btn btn-success btn-sm">Edit</a>
 
+                                             <a href="{{ url('ats/' . $itemP->id . '/lihat') }}"
+                                                    class="btn btn-primary btn-sm">Cv Formal</a>
+        
+    
+
+                                            <a href="{{ url('cvats/' . $itemP->id . '/lihat') }}"
+                                                class="btn btn-primary btn-sm">CV Informal</a>
+    
+
                                             <form action="{{ url('personaldelete/' . $itemP->id . '/delete') }}"
                                                 method="POST">
                                                 @csrf

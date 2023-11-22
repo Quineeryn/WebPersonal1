@@ -135,4 +135,16 @@ class PersonalController extends Controller
         $personal->delete();
         return redirect('personal')->with('message', 'Data successfully deleted!');
     }
+    public function ats(Personal $personal)
+    {
+        $personal->load('education', 'experience');
+        return view('cvtemplates.ATS', compact('personal'));
+    }
+
+    public function cvats(Personal $personal)
+    {
+        $personal->load('education', 'experience');
+        return view('cvats', compact('personal'));
+    }
+
 }

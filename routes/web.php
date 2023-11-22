@@ -50,4 +50,6 @@ Route::controller(App\Http\Controllers\PersonalController::class)->group(functio
     Route::get('/personaledit/{personal}/edit', 'edit')->middleware('auth');
     Route::put('/personalupdate/{personal}', 'update')->middleware('auth');
     Route::delete('/personaldelete/{personal}/delete', 'destroy')->middleware('auth');
+    Route::get('/cvats/{personal}/lihat', 'cvats')->middleware('auth');
+    Route::get('/ats/{personal}/lihat', 'ats')->middleware('auth');
 });

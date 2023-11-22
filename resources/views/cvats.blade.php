@@ -10,29 +10,25 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link rel="icon" href="{{ asset('assets/img/favicon.png') }}">
+  <link rel="apple-touch-icon" href="{{ asset('views/assets/img/apple-touch-icon.png') }}">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="{{ asset('../assets/vendor/aos/aos.css') }}" rel="stylesheet">
+  <link href="{{ asset('../assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('../assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+  <link href="{{ asset('../assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('../assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('../assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+  <link rel="stylesheet" href="../views/assets/vendor/bootstrap/css/">
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="{{ asset('../assets/css/style.css') }}" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: MyResume
-  * Updated: 8 November 2023
-  * Referensi : https://bootstrapmade.com/free-html-bootstrap-template-my-resume/
-  * Author: WPP 1 : Cravitae's Teams
-  ======================================================== -->
 </head>
 
 <body>
@@ -47,19 +43,20 @@
       <ul>
         <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
         <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
-        <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+        <li><a href="#education " class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Education</span></a></li>
+        <li><a href="#experience " class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Experience</span></a></li>
         <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
         <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
       </ul>
     </nav><!-- .nav-menu -->
 
-  </header><!-- End Header -->
+  </header>
 
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex flex-column justify-content-center">
     <div class="container" data-aos="zoom-in" data-aos-delay="100">
-      <h1>Athalie Aurora</h1> <!-- Title name -->
-      <p>I'm a <span class="typed" data-typed-items="Designer, Developer, Freelancer, Writer"></span></p> <!-- More item profile -->
+      <h1>{{ $personal->full_name }}</h1> <!-- Title name -->
+      <span class="typed" data-typed-items="Welcome To My Website"></span> 
 
       <div class="social-links">
         <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
@@ -68,7 +65,7 @@
         <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
       </div>
     </div>
-  </section><!-- End Hero -->
+  </section>
 
   <main id="main">
 
@@ -77,170 +74,95 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>About</h2>
-          <p>I am an enthusiastic technology enthusiast. I enjoy exploring the latest innovations and learning how technology can reshape the world.</p>     <!-- Description -->
+          <h2>About Me</h2>
+          <p> {{ $personal->deskripsi }}</p>     
         </div>
 
         <div class="row">
-          <!-- <div class="col-lg-3">
-            <img src="assets/img/AthalieAurora.jpg" class="img-fluid" alt="">
-          </div> -->
+          <div class="col-lg-3">
+            <img src="{{ asset('fotopersonal/' . $personal->foto) }}" class="img-fluid" alt="">
+          </div>
 
           <div class="col-lg-8 pt-4 pt-lg-0 content">
         
             <div class="row">
               <div class="col-lg-6">
                 <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Full Name:</strong> <span>Athalie Aurora</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>16 July 2004</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Address:</strong> <span>Jl. Cravitae website</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Bandung, Jawa Barat</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>auroraathalie@gmail.com</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+6282119319812</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Link:</strong> <span>https://www.linkedin.com/in/athalie-aurora</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Full Name:</strong> <span>{{ $personal->full_name }}</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Address:</strong> <span>{{ $personal->address }}</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>{{ $personal->city }}</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>{{ $personal->email }}</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>{{ $personal->telephone_number }}</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Link:</strong> <span>{{ $personal->link_profile }}</span></li>
                 </ul>
               </div>
-
             </div>
-            <!-- <p>
-              Deskripsi tambahan jika diperlukan (?)
-            </p> -->
           </div>
         </div>
       </div>
     </section><!-- End About Section -->
 
 
-
-    <!-- ======= Facts Section ======= -->
-    <!-- <section id="facts" class="facts">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Facts</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6">
-            <div class="count-box">
-              <i class="bi bi-emoji-smile"></i>
-              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Happy Clients</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
-            <div class="count-box">
-              <i class="bi bi-journal-richtext"></i>
-              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Projects</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
-            <div class="count-box">
-              <i class="bi bi-headset"></i>
-              <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Hours Of Support</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
-            <div class="count-box">
-              <i class="bi bi-award"></i>
-              <span data-purecounter-start="0" data-purecounter-end="25" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Awards</p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section> -->
-    <!-- End Facts Section -->
-
-
-    <!-- ======= Resume Section ======= -->
+    <!-- ======= Education Section ======= -->
     <section id="resume" class="resume">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Resume</h2>
-          <p>Discover my journey through the lens of experience and education. Explore my experience and education summary for a quick look at my professional and academic path. </p>
+          <h2>Education</h2>
         </div>
 
         <div class="row">
           <div class="col-lg-6">
-
-
-            <h3 class="resume-title">Education</h3>
-
-            <div class="resume-item">
-              <h4>Politeknik Negeri Bandung</h4>
-              <h5>2022 - Present</h5>
-              <p><em>Teknik Komputer dan Informatika</em></p>
-            </div>
-
-            <div class="resume-item">
-              <h4>SMA Negeri 2 Cimahi</h4>
-              <h5>2019 - 2022</h5>
-              <p><em>Mathematics and Science</em></p>
-              <p>Grade: 86/100</p>
-            </div>
-
-        
-            <div class="resume-item">
-              <h4>SMP Islam Terpadu Nurul Imam</h4>
-              <h5>2016 - 2019</h5>
-              <p><em> </em></p>
-              <p>Grade: 95/100</p>
-            </div>
-
+            @foreach($personal->education as $education)
+              <div class="resume-item">
+                <li>
+                  <strong>Institution:</strong> {{
+                  $education->Edu_institution }}
+              </li>
+              <li>
+                  <strong>Level:</strong> {{ $education->Education_level
+                  }}
+              </li>
+              <li>
+                  <strong>Location:</strong> {{
+                  $education->Loc_edu }}
+              </li>
+              <li>
+                  <strong>Date:</strong> {{
+                  $education->Start_date_edu }} - {{
+                  $education->End_date_edu }}
+              </li>
+              <li>
+                  <strong>Achievement:</strong> {{
+                  $education->Achievment }}
+              </li>
+              </div>
+              @endforeach
           </div>
+        </div>
+      </section>
 
+    <!-- ======= Experience Section ======= -->
+    <section id="experience" class="resume">
+      <div class="container" data-aos="fade-up">
 
-
-          <div class="col-lg-6">
-            <h3 class="resume-title">Experience</h3>
-
-            <div class="resume-item">
-              <h4>The Young Staff of the Departement of Research, Technology, and Higher Education</h4>
-              <h5>2023 - Present</h5>
-              <p><em>Himpunan Mahasiswa Komputer Politeknik Negeri Bandung</em></p>
-              <!-- <ul>
-                <li></li>
-              </ul> -->
-            </div>
-
-            <div class="resume-item">
-              <h4>Chief Technology Officer</h4>
-              <h5>2023 - Present</h5>
-              <p><em>Powertechno Service & Maintenance</em></p>
-              <!-- <ul>
-                <li></li>
-              </ul> -->
-            </div>
-
-            <div class="resume-item">
-              <h4>Brand Ambassador</h4>
-              <h5>2021 - 2021</h5>
-              <p><em>Maju Indonesia</em></p>
-              <ul>
-                <li>Writing, Social Media, Product, Communication, Video Editing</li>
-              </ul>
-            </div>
-
-
-
-          </div>
-
+        <div class="section-title">
+          <h2>Experience</h2>
         </div>
 
-      </div>
-    </section>
-    <!-- End Resume Section -->
+        <div class="row">
+          <div class="col-lg-6">
+            @foreach($personal->experience as $experience)
+              <div class="resume-item">
+                <h4>{{ $experience->Company_name }}, {{ $experience->Job_title }}</h4>
+                <h5>{{ $experience->Start_date_org }} - {{ $experience->End_date_org }}</h5>
+                <h6>{{ $experience->Job_desc }}</h6>
+                <p><em>{{ $experience->Loc_org }}</em></p>
+              </div>
+            @endforeach
+          </div>
+        </div>
+      </section>
 
         <!-- ======= Skills Section ======= -->
         <section id="skills" class="skills section-bg">
@@ -336,12 +258,12 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
+              <img src="{{ asset('../assets/img/portfolio/portfolio-1.jpg') }}" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>Project 1</h4>
                 <p>Project</p>
                 <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
+                  <a href="{{ asset('../assets/img/portfolio/portfolio-1.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
                   <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
@@ -350,12 +272,12 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
+              <img src="{{ asset('../assets/img/portfolio/portfolio-2.jpg') }}" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>Web 3</h4>
                 <p>Web</p>
                 <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
+                  <a href="{{ asset('../assets/img/portfolio/portfolio-2.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
                   <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
@@ -364,12 +286,12 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
+              <img src="{{ asset('../assets/img/portfolio/portfolio-3.jpg') }}" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>App 2</h4>
                 <p>App</p>
                 <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
+                  <a href="{{ asset('../assets/img/portfolio/portfolio-3.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
                   <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
@@ -378,12 +300,12 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-card">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
+              <img src="{{ asset('../assets/img/portfolio/portfolio-4.jpg') }}" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>Card 2</h4>
                 <p>Card</p>
                 <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
+                  <a href="{{ asset('../assets/img/portfolio/portfolio-4.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
                   <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
@@ -392,12 +314,12 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
+              <img src="{{ asset('../assets/img/portfolio/portfolio-5.jpg') }}" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>Web 2</h4>
                 <p>Web</p>
                 <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
+                  <a href="{{ asset('../assets/img/portfolio/portfolio-5.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
                   <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
@@ -406,12 +328,12 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
+              <img src="{{ asset('../assets/img/portfolio/portfolio-6.jpg') }}" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>App 3</h4>
                 <p>App</p>
                 <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
+                  <a href="{{ asset('../assets/img/portfolio/portfolio-6.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
                   <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
@@ -420,12 +342,12 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-card">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
+              <img src="{{ asset('../assets/img/portfolio/portfolio-7.jpg') }}" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>Card 1</h4>
                 <p>Card</p>
                 <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
+                  <a href="{{ asset('../assets/img/portfolio/portfolio-7.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
                   <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
@@ -434,12 +356,12 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-card">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
+              <img src="{{ asset('../assets/img/portfolio/portfolio-8.jpg') }}" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>Card 3</h4>
                 <p>Card</p>
                 <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
+                  <a href="{{ asset('../assets/img/portfolio/portfolio-8.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
                   <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
@@ -448,12 +370,12 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
+              <img src="{{ asset('../assets/img/portfolio/portfolio-9.jpg') }}" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>Web 3</h4>
                 <p>Web</p>
                 <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
+                  <a href="{{ asset('../assets/img/portfolio/portfolio-9.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
                   <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
@@ -724,7 +646,6 @@
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="container">
-      <h3>Athalie Aurora</h3>
       <p>Connect with me and stay updated. Let's build a digital future together.</p>
       <div class="social-links">
         <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
@@ -746,18 +667,18 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="{{ asset('../assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
+  <script src="{{ asset('../assets/vendor/aos/aos.js') }}"></script>
+  <script src="{{ asset('../assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('../assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+  <script src="{{ asset('../assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+  <script src="{{ asset('../assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+  <script src="{{ asset('../assets/vendor/typed.js/typed.umd.js') }}"></script>
+  <script src="{{ asset('../assets/vendor/waypoints/noframework.waypoints.js') }}"></script>
+  <script src="{{ asset('../assets/vendor/php-email-form/validate.js') }}"></script>
 
   <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <script src="{{ asset('../assets/js/main.js') }}"></script>
 
 </body>
 
