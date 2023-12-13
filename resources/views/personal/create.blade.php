@@ -1,149 +1,214 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Modern Form</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
 
-@section('content')
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>
-                            Personal Information
-                            <a href="{{ url('personal') }}" class="btn btn-primary float-end">BACK</a>
-                        </h4>
-                    </div>
-                    <div class="card-body">
+        .container {
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 50px;
+        }
 
-                        <form action="{{ url('/personalstore') }} " method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <h4>Personal Information</h4>
+        .card {
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
 
-                            <div class="mb3">
-                                <label>Masukkan Foto</label>
-                                <input type="file" name="foto" class="form control">
-                            </div>
+        .card-header {
+            background-color: #007bff;
+            color: #ffffff;
+            border-bottom: none;
+        }
 
-                            <div class="mb3">
-                                <label>Deskripsi</label>
-                                <input type="text" name="deskripsi" class="form control">
-                            </div>
+        .card-body {
+            padding: 20px;
+        }
 
-                            <div class="mb3">
-                                <label>Full Name</label>
-                                <input type="text" name="full_name" class="form control">
-                            </div>
+        .form-control {
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
 
-                            <div class="mb3">
-                                <label>Email</label>
-                                <input type="email" name="email" class="form control">
-                            </div>
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+        }
 
-                            <div class="mb3">
-                                <label>Phone Number</label>
-                                <input type="tel" name="telephone_number" class="form control">
-                            </div>
+        .btn-success {
+            background-color: #28a745;
+            border: none;
+            border-radius: 4px;
+        }
 
-                            <div class="mb3">
-                                <label>City</label>
-                                <input type="text" name="city" class="form control">
-                            </div>
+        .btn-danger {
+            background-color: #dc3545;
+            border: none;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
 
-                            <div class="mb3">
-                                <label>Address</label>
-                                <input type="text" name="address" class="form control">
-                            </div>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">
+                        Personal Information
+                        <a href="{{ url('personal') }}" class="btn btn-primary float-right">BACK</a>
+                    </h4>
+                </div>
+                <div class="card-body">
 
-                            <div class="mb3">
-                                <label>Link Profile</label>
-                                <input type="text" name="link_profile" class="form control">
-                            </div>
+                    <form action="{{ url('/personalstore') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <h4>Personal Information</h4>
 
-                            <h4>Education</h4>
-                            <div id="education-container">
-                                <div class="education-form mb-3">
-                                    <div class="mb3">
-                                        <label>Education Institution</label>
-                                        <input type="text" name="education[0][Edu_institution]" class="form control">
-                                    </div>
+                        <div class="mb3">
+                            <label>Masukkan Foto</label>
+                            <input type="file" name="foto" class="form control">
+                        </div>
 
-                                    <div class="mb3">
-                                        <label>Education Location</label>
-                                        <input type="text" name="education[0][Loc_edu]" class="form control">
-                                    </div>
+                        <div class="mb3">
+                            <label>Deskripsi</label>
+                            <input type="text" name="deskripsi" class="form control">
+                        </div>
 
-                                    <div class="mb3">
-                                        <label>Start Date</label>
-                                        <input type="date" name="education[0][Start_date_edu]" class="form control">
-                                    </div>
+                        <div class="mb3">
+                            <label>Full Name</label>
+                            <input type="text" name="full_name" class="form control">
+                        </div>
 
-                                    <div class="mb3">
-                                        <label>End Date</label>
-                                        <input type="date" name="education[0][End_date_edu]" class="form control">
-                                    </div>
+                        <div class="mb3">
+                            <label>Email</label>
+                            <input type="email" name="email" class="form control">
+                        </div>
 
-                                    <div class="mb3">
-                                        <label>Achievement</label>
-                                        <input type="text" name="education[0][Achievment]" class="form control">
-                                    </div>
+                        <div class="mb3">
+                            <label>Phone Number</label>
+                            <input type="tel" name="telephone_number" class="form control">
+                        </div>
 
-                                    <div class="mb3">
-                                        <label>Education Level</label>
-                                        <input type="text" name="education[0][Education_level]" class="form control">
-                                    </div>
-                                    <button type="button" class="btn btn-danger remove-education"
-                                        style="display:none;">Hapus</button>
+                        <div class="mb3">
+                            <label>City</label>
+                            <input type="text" name="city" class="form control">
+                        </div>
+
+                        <div class="mb3">
+                            <label>Address</label>
+                            <input type="text" name="address" class="form control">
+                        </div>
+
+                        <div class="mb3">
+                            <label>Link Profile</label>
+                            <input type="text" name="link_profile" class="form control">
+                        </div>
+
+                        <h4>Education</h4>
+                        <div id="education-container">
+                            <div class="education-form mb-3">
+                                <div class="mb3">
+                                    <label>Education Institution</label>
+                                    <input type="text" name="education[0][Edu_institution]" class="form control">
                                 </div>
-                            </div>
-                            <button type="button" id="add-education" class="btn btn-success">Tambah Pendidikan</button>
 
-                            <h4>Experience</h4>
-                            <div id="experience-container">
-                                <div class="experience-form mb-3">
-                                    <div class="mb3">
-                                        <label>Company Name</label>
-                                        <input type="text" name="experience[0][Company_name]" class="form control">
-                                    </div>
-
-                                    <div class="mb3">
-                                        <label>Company Location</label>
-                                        <input type="text" name="experience[0][Loc_org]" class="form control">
-                                    </div>
-
-                                    <div class="mb3">
-                                        <label>Start Date Company</label>
-                                        <input type="date" name="experience[0][Start_date_org]" class="form control">
-                                    </div>
-
-                                    <div class="mb3">
-                                        <label>End Date Company</label>
-                                        <input type="date" name="experience[0][End_date_org]" class="form control">
-                                    </div>
-
-                                    <div class="mb3">
-                                        <label>Job Title</label>
-                                        <input type="text" name="experience[0][Job_title]" class="form control">
-                                    </div>
-
-                                    <div class="mb3">
-                                        <label>Job Description</label>
-                                        <input type="text" name="experience[0][Job_desc]" class="form control">
-                                    </div>
-                                    <button type="button" class="btn btn-danger remove-experience"
-                                        style="display:none;">Hapus</button>
+                                <div class="mb3">
+                                    <label>Education Location</label>
+                                    <input type="text" name="education[0][Loc_edu]" class="form control">
                                 </div>
-                            </div>
-                            <button type="button" id="add-experience" class="btn btn-success">Tambah Experience</button>
-                            <div class="mb-3">
-                                <button type="submit" class ="btn btn-primary"> Submit </button>
-                            </div>
-                        </form>
 
-                    </div>
+                                <div class="mb3">
+                                    <label>Start Date</label>
+                                    <input type="date" name="education[0][Start_date_edu]" class="form control">
+                                </div>
+
+                                <div class="mb3">
+                                    <label>End Date</label>
+                                    <input type="date" name="education[0][End_date_edu]" class="form control">
+                                </div>
+
+                                <div class="mb3">
+                                    <label>Achievement</label>
+                                    <input type="text" name="education[0][Achievment]" class="form control">
+                                </div>
+
+                                <div class="mb3">
+                                    <label>Education Level</label>
+                                    <input type="text" name="education[0][Education_level]" class="form control">
+                                </div>
+                                <button type="button" class="btn btn-danger remove-education"
+                                    style="display:none;">Hapus</button>
+                            </div>
+                        </div>
+                        <button type="button" id="add-education" class="btn btn-success">Tambah Pendidikan</button>
+
+                        <h4>Experience</h4>
+                        <div id="experience-container">
+                            <div class="experience-form mb-3">
+                                <div class="mb3">
+                                    <label>Company Name</label>
+                                    <input type="text" name="experience[0][Company_name]" class="form control">
+                                </div>
+
+                                <div class="mb3">
+                                    <label>Company Location</label>
+                                    <input type="text" name="experience[0][Loc_org]" class="form control">
+                                </div>
+
+                                <div class="mb3">
+                                    <label>Start Date Company</label>
+                                    <input type="date" name="experience[0][Start_date_org]" class="form control">
+                                </div>
+
+                                <div class="mb3">
+                                    <label>End Date Company</label>
+                                    <input type="date" name="experience[0][End_date_org]" class="form control">
+                                </div>
+
+                                <div class="mb3">
+                                    <label>Job Title</label>
+                                    <input type="text" name="experience[0][Job_title]" class="form control">
+                                </div>
+
+                                <div class="mb3">
+                                    <label>Job Description</label>
+                                    <input type="text" name="experience[0][Job_desc]" class="form control">
+                                </div>
+                                <button type="button" class="btn btn-danger remove-experience"
+                                    style="display:none;">Hapus</button>
+                            </div>
+                        </div>
+                        <button type="button" id="add-experience" class="btn btn-success">Tambah Experience</button>
+
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+
                 </div>
             </div>
         </div>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
             const educationContainer = document.getElementById('education-container');
             const addEducationButton = document.getElementById('add-education');
             const experienceContainer = document.getElementById('experience-container');
@@ -163,7 +228,7 @@
                 // Tambahkan indeks dinamis ke dalam nama elemen dan tambahkan data-index
                 educationCount++;
                 newEducationForm.querySelectorAll('[name]').forEach((input) => {
-                    input.name = input.name.replace('education[0]', `education[${educationCount}]`);
+                    input.name = input.name.replace('education[0]', education[${educationCount}]);
                 });
 
                 newEducationForm.querySelector('.remove-education').style.display =
@@ -183,7 +248,7 @@
                 experienceCount++;
                 newExperienceForm.querySelectorAll('[name]').forEach((input) => {
                     input.name = input.name.replace('experience[0]',
-                        `experience[${experienceCount}]`);
+                        experience[${experienceCount}]);
                 });
 
                 newExperienceForm.querySelector('.remove-experience').style.display =
@@ -205,8 +270,8 @@
                             const newIndex = currentIndex - 1;
                             form.querySelectorAll('[name]').forEach((input) => {
                                 input.name = input.name.replace(
-                                    `education[${currentIndex}]`,
-                                    `education[${newIndex}]`);
+                                    education[${currentIndex}],
+                                    education[${newIndex}]);
                             });
                         }
                     });
@@ -230,8 +295,8 @@
                             const newIndex = currentIndex - 1;
                             form.querySelectorAll('[name]').forEach((input) => {
                                 input.name = input.name.replace(
-                                    `experience[${currentIndex}]`,
-                                    `experience[${newIndex}]`);
+                                    experience[${currentIndex}],
+                                    experience[${newIndex}]);
                             });
                         }
                     });
@@ -241,5 +306,7 @@
             });
 
         });
-    </script>
-@endsection
+</script>
+
+</body>
+</html>

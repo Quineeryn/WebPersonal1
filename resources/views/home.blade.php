@@ -15,12 +15,12 @@
                         and impactful CV begins here. Join us today!
                     </p>
                     <div class="btn-group" role="group">
-                        <a href="{{ url('/personal') }}" class="btn btn-outline-secondary"
+                        <a href="{{ url ('/personal/create')}}" class="btn btn-outline-secondary"
                             style=" 
                               background-color: #c3dce3;
                               color: #265172;
                               border-radius: 10px;
-                            ">CREATEYOUR OWN </a>
+                            ">CREATE YOUR OWN </a>
                         <button type="button" class="btn btn-outline-secondary"
                             style="
                 margin-left: 20px;
